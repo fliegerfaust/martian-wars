@@ -5,6 +5,12 @@
 [Bb]uilds/
 Assets/AssetStoreTools*
 
+src/MartianWarsDevelopment/.idea
+src/MartianWarsDevelopment/Assets/Plugins/Editor/JetBrains
+src/MartianWarsDevelopment/Logs
+src/MartianWarsDevelopment/UserSettings
+
+
 # Visual Studio cache directory
 .vs/
 
@@ -35,3 +41,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Ignore media & other temp files
+*.log
+*.log.meta
+
