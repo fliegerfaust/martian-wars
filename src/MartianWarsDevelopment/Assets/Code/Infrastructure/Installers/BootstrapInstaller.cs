@@ -7,12 +7,14 @@ namespace Code.Infrastructure.Installers
   {
     public override void InstallBindings()
     {
-      Container.Bind<ICoroutineRunner>().FromInstance(this).AsSingle();
-      
+      BindCoroutineRunner();
       BindSceneLoader();
       BindGameStates();
       BindGameStateMachine();
     }
+
+    private void BindCoroutineRunner() => 
+      Container.Bind<ICoroutineRunner>().FromInstance(this).AsSingle();
 
     private void BindSceneLoader() => 
       Container.Bind<SceneLoader>().AsSingle();

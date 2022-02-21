@@ -4,6 +4,8 @@ namespace Code.Infrastructure.GameStates
 {
   public class GameStateMachineInitializer : IInitializable
   {
+    private const string DemoSceneName = "Demo";
+    
     private readonly GameStateMachine _stateMachine;
     private readonly TestState _testState;
     private readonly LoadLevelState _loadLevelState;
@@ -24,7 +26,7 @@ namespace Code.Infrastructure.GameStates
       _stateMachine.RegisterState(_testState);
       _stateMachine.RegisterState(_loadLevelState);
 
-      _stateMachine.Enter<LoadLevelState, string>("Demo");
+      _stateMachine.Enter<LoadLevelState, string>(DemoSceneName);
     }
   }
 }
