@@ -7,8 +7,6 @@ namespace Code.Player
 {
   public class PlayerDrive : MonoBehaviour
   {
-    // private const string ThrottleInput = "Vertical";
-    // private const string TurnInput = "Horizontal";
     private const float ToKmHMultiplier = 3.6f;
     private const int HandbrakeApplySpeed = 4;
 
@@ -36,10 +34,8 @@ namespace Code.Player
     private IInputService _inputService;
 
     [Inject]
-    public void Construct(IInputService inputService)
-    {
+    public void Construct(IInputService inputService) =>
       _inputService = inputService;
-    }
 
     private void Start()
     {
@@ -52,25 +48,22 @@ namespace Code.Player
 
     private void FixedUpdate()
     {
-      GetAccelerateAndBreakInput();
+      GetInput();
       SetSteeringDirection();
       UpdateWheelColliders();
       MeasureCurrentSpeed();
-      ApplyHandbrake();
+      ApplyThrottleAndBrake();
       ApplyDownforce();
     }
 
-    private void GetAccelerateAndBreakInput()
+    private void GetInput()
     {
-      // if (!string.IsNullOrEmpty(ThrottleInput))
-      //   _throttle = GetInput(ThrottleInput);
       _throttle = _inputService.Axis.y;
+      _steering = _turnInputCurve.Evaluate(_inputService.Axis.x) * _steerAngle;
     }
 
     private void SetSteeringDirection()
     {
-      // _steering = _turnInputCurve.Evaluate(GetInput(TurnInput)) * _steerAngle;
-      _steering = _turnInputCurve.Evaluate(_inputService.Axis.x) * _steerAngle;
       foreach (WheelCollider wheel in _turnWheels)
         wheel.steerAngle = Mathf.Lerp(wheel.steerAngle, _steering, _steerSpeed);
     }
@@ -87,7 +80,7 @@ namespace Code.Player
     private void MeasureCurrentSpeed() =>
       _speed = transform.InverseTransformDirection(_rigidbody.velocity).z * ToKmHMultiplier;
 
-    private void ApplyHandbrake()
+    private void ApplyThrottleAndBrake()
     {
       if (_throttle != 0 && (Mathf.Abs(_speed) < HandbrakeApplySpeed ||
                              Math.Abs(Mathf.Sign(_speed) - Mathf.Sign(_throttle)) < Constants.Epsilon))
@@ -106,8 +99,5 @@ namespace Code.Player
       if (_rigidbody != null && _centerOfMass != null)
         _rigidbody.centerOfMass = _centerOfMass.localPosition;
     }
-    
-    private float GetInput(string input) =>
-      Input.GetAxis(input);
   }
 }
