@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Code.Infrastructure.GameStates
 {
@@ -12,6 +13,7 @@ namespace Code.Infrastructure.GameStates
     public void Enter()
     {
       Debug.Log("Entered test state!");
+      Debug.Log($"Active scene: {SceneManager.GetActiveScene().name}");
     }
   }
 }
