@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 8370765524257980495}
   - component: {fileID: 8424684049987367678}
   m_Layer: 9
-  m_Name: RoverInTheFuture
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

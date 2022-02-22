@@ -12,6 +12,9 @@ namespace Code.Logic
 
     private Rigidbody _rigidbody;
 
+    public void Follow(GameObject target) => 
+      _target = target.transform;
+
     private void Start() =>
       _rigidbody = GetComponent<Rigidbody>();
 

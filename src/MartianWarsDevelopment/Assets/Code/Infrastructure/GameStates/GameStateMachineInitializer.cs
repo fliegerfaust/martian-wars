@@ -26,6 +26,11 @@ namespace Code.Infrastructure.GameStates
       _stateMachine.RegisterState(_testState);
       _stateMachine.RegisterState(_loadLevelState);
 
+      EnterLoadLevel();
+    }
+
+    private void EnterLoadLevel()
+    {
       _stateMachine.Enter<LoadLevelState, string>(DemoSceneName);
     }
   }

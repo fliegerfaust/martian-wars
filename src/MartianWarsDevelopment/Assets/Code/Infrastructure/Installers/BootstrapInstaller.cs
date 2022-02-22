@@ -1,4 +1,7 @@
+using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.GameStates;
+using Code.Infrastructure.Services.Factory;
+using Code.Infrastructure.Services.StaticData;
 using Zenject;
 
 namespace Code.Infrastructure.Installers
@@ -9,6 +12,11 @@ namespace Code.Infrastructure.Installers
     {
       BindCoroutineRunner();
       BindSceneLoader();
+      
+      Container.BindInterfacesAndSelfTo<AssetProvider>().AsSingle();
+      Container.BindInterfacesAndSelfTo<StaticDataService>().AsSingle();
+      Container.BindInterfacesAndSelfTo<PlayerFactory>().AsSingle();
+      
       BindGameStates();
       BindGameStateMachine();
     }
