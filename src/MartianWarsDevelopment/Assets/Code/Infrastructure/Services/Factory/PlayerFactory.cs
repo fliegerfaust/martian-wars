@@ -5,14 +5,12 @@ namespace Code.Infrastructure.Services.Factory
 {
   public class PlayerFactory : IPlayerFactory
   {
-    private IAssets _assets;
+    private readonly IAssets _assets;
 
-    public PlayerFactory(IAssets assets)
-    {
+    public PlayerFactory(IAssets assets) =>
       _assets = assets;
-    }
 
-    public GameObject CreatePlayer(Vector3 at) => 
+    public GameObject CreatePlayer(Vector3 at) =>
       _assets.Instantiate(AssetPath.PlayerPath, at);
 
     public GameObject CreateHud() =>

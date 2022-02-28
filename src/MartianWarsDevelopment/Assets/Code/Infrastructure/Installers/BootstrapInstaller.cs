@@ -1,3 +1,5 @@
+using Code.Infrastructure.Services.Input;
+using UnityEngine;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.GameStates;
 using Code.Infrastructure.Services.Factory;
@@ -12,19 +14,37 @@ namespace Code.Infrastructure.Installers
     {
       BindCoroutineRunner();
       BindSceneLoader();
-      
-      Container.BindInterfacesAndSelfTo<AssetProvider>().AsSingle();
-      Container.BindInterfacesAndSelfTo<StaticDataService>().AsSingle();
-      Container.BindInterfacesAndSelfTo<PlayerFactory>().AsSingle();
-      
+      BindAssetProvider();
+      BindStaticDataService();
+
+      BindPlayerFactory();
+      BindInputService();
+
       BindGameStates();
       BindGameStateMachine();
     }
 
-    private void BindCoroutineRunner() => 
+    private void BindPlayerFactory() =>
+      Container.BindInterfacesAndSelfTo<PlayerFactory>().AsSingle();
+
+    private void BindInputService()
+    {
+      if (Application.isEditor)
+        Container.BindInterfacesAndSelfTo<StandaloneInputService>().AsSingle();
+      else
+        Container.BindInterfacesAndSelfTo<MobileInputService>().AsSingle();
+    }
+
+    private void BindStaticDataService() =>
+      Container.BindInterfacesAndSelfTo<StaticDataService>().AsSingle();
+
+    private void BindAssetProvider() =>
+      Container.BindInterfacesAndSelfTo<AssetProvider>().AsSingle();
+
+    private void BindCoroutineRunner() =>
       Container.Bind<ICoroutineRunner>().FromInstance(this).AsSingle();
 
-    private void BindSceneLoader() => 
+    private void BindSceneLoader() =>
       Container.Bind<SceneLoader>().AsSingle();
 
     private void BindGameStates()
