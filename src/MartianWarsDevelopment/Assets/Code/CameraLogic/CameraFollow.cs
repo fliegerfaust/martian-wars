@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.Logic
+namespace Code.CameraLogic
 {
   public class CameraFollow : MonoBehaviour
   {
@@ -11,6 +11,9 @@ namespace Code.Logic
     [Range(0, 10)] [SerializeField] private float _lerpRotationMultiplier = 1f;
 
     private Rigidbody _rigidbody;
+
+    public void Follow(GameObject target) => 
+      _target = target.transform;
 
     private void Start() =>
       _rigidbody = GetComponent<Rigidbody>();
