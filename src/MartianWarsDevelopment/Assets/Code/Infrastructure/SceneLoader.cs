@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Code.Infrastructure
 {
+  [UsedImplicitly]
   public class SceneLoader
   {
     private readonly ICoroutineRunner _coroutineRunner;

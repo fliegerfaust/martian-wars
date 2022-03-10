@@ -4,11 +4,13 @@ using Code.Infrastructure.Services.Input;
 using Code.Infrastructure.Services.StaticData;
 using Code.Player;
 using Code.StaticData;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Code.Infrastructure.GameStates
 {
+  [UsedImplicitly]
   public class LoadLevelState : IPayloadedState<string>
   {
     private readonly GameStateMachine _stateMachine;
@@ -57,7 +59,7 @@ namespace Code.Infrastructure.GameStates
 
       InitHud();
       InitInputService(player);
-      CameraFollow(player);
+      InitCamera(player);
     }
 
     private GameObject InitPlayer(LevelStaticData levelData) =>
@@ -69,8 +71,11 @@ namespace Code.Infrastructure.GameStates
     private void InitInputService(GameObject player) =>
       player.GetComponent<PlayerDrive>().Construct(_inputService);
 
-    private void CameraFollow(GameObject player) =>
-      Camera.main.GetComponent<CameraFollow>().Follow(player);
+    private void InitCamera(GameObject player)
+    {
+      GameObject thirdPersonCamera = _playerFactory.CreateThirdPersonCamera();
+      thirdPersonCamera.GetComponent<CinemachineCameraFollow>().Follow(player.transform);
+    }
 
     private LevelStaticData LevelStaticData() =>
       _staticData.ForLevel(SceneManager.GetActiveScene().name);

@@ -4,7 +4,7 @@ namespace Code.CameraLogic
 {
   public class CameraFollow : MonoBehaviour
   {
-    [SerializeField] private Transform _target;
+    private Transform _target;
     [SerializeField] private Vector3 _offset;
 
     [Range(0, 10)] [SerializeField] private float _lerpPositionMultiplier = 1f;
@@ -12,7 +12,7 @@ namespace Code.CameraLogic
 
     private Rigidbody _rigidbody;
 
-    public void Follow(GameObject target) => 
+    public void Follow(GameObject target) =>
       _target = target.transform;
 
     private void Start() =>

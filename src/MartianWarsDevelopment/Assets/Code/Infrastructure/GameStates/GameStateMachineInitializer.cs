@@ -1,7 +1,9 @@
+using JetBrains.Annotations;
 using Zenject;
 
 namespace Code.Infrastructure.GameStates
 {
+  [UsedImplicitly]
   public class GameStateMachineInitializer : IInitializable
   {
     private const string DemoSceneName = "Demo";

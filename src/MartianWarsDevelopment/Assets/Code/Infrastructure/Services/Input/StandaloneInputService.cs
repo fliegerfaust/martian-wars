@@ -1,7 +1,9 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services.Input
 {
+  [UsedImplicitly]
   public class StandaloneInputService : InputService
   {
     public override Vector2 Axis

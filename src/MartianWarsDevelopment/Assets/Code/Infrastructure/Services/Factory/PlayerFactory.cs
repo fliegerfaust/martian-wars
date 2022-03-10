@@ -1,8 +1,10 @@
 using Code.Infrastructure.AssetManagement;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services.Factory
 {
+  [UsedImplicitly]
   public class PlayerFactory : IPlayerFactory
   {
     private readonly IAssets _assets;
@@ -15,5 +17,8 @@ namespace Code.Infrastructure.Services.Factory
 
     public GameObject CreateHud() =>
       _assets.Instantiate(AssetPath.HudPath);
+
+    public GameObject CreateThirdPersonCamera() =>
+      _assets.Instantiate(AssetPath.ThirdPersonCameraPath);
   }
 }
