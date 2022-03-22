@@ -33,7 +33,6 @@ namespace Code.Player
 
     private IInputService _inputService;
 
-    [Inject]
     public void Construct(IInputService inputService) =>
       _inputService = inputService;
 
@@ -58,8 +57,8 @@ namespace Code.Player
 
     private void GetInput()
     {
-      _throttle = _inputService.Axis.y;
-      _steering = _turnInputCurve.Evaluate(_inputService.Axis.x) * _steerAngle;
+      _throttle = _inputService.JoystickAxis.y;
+      _steering = _turnInputCurve.Evaluate(_inputService.JoystickAxis.x) * _steerAngle;
     }
 
     private void SetSteeringDirection()

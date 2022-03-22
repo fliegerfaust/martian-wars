@@ -1,3 +1,4 @@
+using Cinemachine;
 using Code.CameraLogic;
 using Code.Infrastructure.Services.Factory;
 using Code.Infrastructure.Services.Input;
@@ -65,11 +66,14 @@ namespace Code.Infrastructure.GameStates
     private GameObject InitPlayer(LevelStaticData levelData) =>
       _playerFactory.CreatePlayer(levelData.PlayerInitialPosition);
 
+    private void InitInputService(GameObject player)
+    {
+      player.GetComponent<PlayerDrive>().Construct(_inputService);
+      player.GetComponent<PlayerCameraRotation>().Construct(_inputService);
+    }
+
     private void InitHud() =>
       _playerFactory.CreateHud();
-
-    private void InitInputService(GameObject player) =>
-      player.GetComponent<PlayerDrive>().Construct(_inputService);
 
     private void InitCamera(GameObject player)
     {

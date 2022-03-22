@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using UnityEngine;
 using Zenject;
 
 namespace Code.Infrastructure.GameStates
@@ -26,9 +27,13 @@ namespace Code.Infrastructure.GameStates
 
     public void Initialize()
     {
+      SetDeviceFrameRate();
       RegisterStates();
       EnterLoadLevel();
     }
+
+    private void SetDeviceFrameRate() =>
+      Application.targetFrameRate = Mathf.Min(Screen.currentResolution.refreshRate, 60);
 
     private void RegisterStates()
     {
