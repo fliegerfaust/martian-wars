@@ -1,8 +1,10 @@
+using Cinemachine;
+using Zenject;
 using Vector2 = UnityEngine.Vector2;
 
 namespace Code.Infrastructure.Services.Input
 {
-  public abstract class InputService : IInputService
+  public abstract class InputService : IInputService, IInitializable
   {
     protected const string Horizontal = "Horizontal";
     protected const string Vertical = "Vertical";
@@ -21,5 +23,8 @@ namespace Code.Infrastructure.Services.Input
 
     protected static Vector2 SimpleInputTouchpadAxis() =>
       new Vector2(SimpleInput.GetAxis(MouseX), SimpleInput.GetAxis(MouseY));
+
+    public void Initialize() =>
+      CinemachineCore.GetInputAxis = SimpleInput.GetAxis;
   }
 }

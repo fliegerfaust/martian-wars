@@ -1,5 +1,5 @@
 using JetBrains.Annotations;
-using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Code.Infrastructure.Services.Input
 {

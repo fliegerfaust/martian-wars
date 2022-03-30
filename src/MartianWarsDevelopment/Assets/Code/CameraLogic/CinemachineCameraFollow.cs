@@ -5,11 +5,11 @@ namespace Code.CameraLogic
 {
   public class CinemachineCameraFollow : MonoBehaviour
   {
-    private CinemachineVirtualCamera _cinemachineFreeLook;
+    private CinemachineFreeLook _cinemachineFreeLook;
 
     public void Follow(Transform target)
     {
-      _cinemachineFreeLook = GetComponent<CinemachineVirtualCamera>();
+      _cinemachineFreeLook = GetComponent<CinemachineFreeLook>();
       Transform followPoint = target.GetChild(0).transform;
 
       _cinemachineFreeLook.Follow = followPoint;

@@ -59,18 +59,11 @@ namespace Code.Infrastructure.GameStates
       GameObject player = InitPlayer(levelData);
 
       InitHud();
-      InitInputService(player);
       InitCamera(player);
     }
 
     private GameObject InitPlayer(LevelStaticData levelData) =>
       _playerFactory.CreatePlayer(levelData.PlayerInitialPosition);
-
-    private void InitInputService(GameObject player)
-    {
-      player.GetComponent<PlayerDrive>().Construct(_inputService);
-      player.GetComponent<PlayerCameraRotation>().Construct(_inputService);
-    }
 
     private void InitHud() =>
       _playerFactory.CreateHud();

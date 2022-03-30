@@ -177,7 +177,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7610533064604931192}
-  - component: {fileID: 650466635917308048}
+  - component: {fileID: 6907203049806127179}
+  - component: {fileID: 7997251282942288586}
   m_Layer: 5
   m_Name: TouchArea
   m_TagString: Untagged
@@ -199,12 +200,12 @@ RectTransform:
   m_Father: {fileID: 2903300334543252833}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.31300002, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.5, y: 0}
+  m_SizeDelta: {x: 1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &650466635917308048
+--- !u!114 &6907203049806127179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,15 +214,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 4124616873564851441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22399be9592f58241ac1138672496a31, type: 3}
+  m_Script: {fileID: 11500000, guid: fd2b1b62768d1834a9c1821a5c04c594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7997251282942288586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4124616873564851441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24ddbdc4c85dc043aba5a6335f816f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowTouchInput: 1
+  allowedMouseButtons: 000000000100000002000000
   xAxis:
     m_key: Mouse X
     value: 0
   yAxis:
     m_key: Mouse Y
     value: 0
+  invertHorizontal: 0
+  invertVertical: 0
+  sensitivity: 0.5
 --- !u!1 &7084313031629903309
 GameObject:
   m_ObjectHideFlags: 0
