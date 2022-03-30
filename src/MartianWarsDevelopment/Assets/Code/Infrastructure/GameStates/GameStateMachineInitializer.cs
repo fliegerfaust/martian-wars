@@ -1,7 +1,10 @@
+using JetBrains.Annotations;
+using UnityEngine;
 using Zenject;
 
 namespace Code.Infrastructure.GameStates
 {
+  [UsedImplicitly]
   public class GameStateMachineInitializer : IInitializable
   {
     private const string DemoSceneName = "Demo";
@@ -24,9 +27,13 @@ namespace Code.Infrastructure.GameStates
 
     public void Initialize()
     {
+      SetDeviceFrameRate();
       RegisterStates();
       EnterLoadLevel();
     }
+
+    private void SetDeviceFrameRate() =>
+      Application.targetFrameRate = Mathf.Min(Screen.currentResolution.refreshRate, 60);
 
     private void RegisterStates()
     {
