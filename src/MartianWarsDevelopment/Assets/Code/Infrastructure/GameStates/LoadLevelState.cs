@@ -2,7 +2,6 @@ using Code.CameraLogic;
 using Code.Infrastructure.Services.Factory;
 using Code.Infrastructure.Services.Input;
 using Code.Infrastructure.Services.StaticData;
-using Code.Player;
 using Code.StaticData;
 using UnityEngine;
 using UnityEngine.SceneManagement;
