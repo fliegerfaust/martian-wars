@@ -4,8 +4,7 @@ namespace Code.Infrastructure.Services.Input
 {
   public interface IInputService
   {
-    Vector2 JoystickAxis { get; }
-    Vector2 TouchpadAxis { get; }
+    Vector2 Axis { get; }
     bool IsAttackButtonUp();
   }
 }

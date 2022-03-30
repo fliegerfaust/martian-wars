@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 
 namespace Code.Infrastructure.GameStates
 {
-  [UsedImplicitly]
   public class GameStateMachine
   {
     private readonly Dictionary<Type, IExitableState> _states = new Dictionary<Type, IExitableState>();
