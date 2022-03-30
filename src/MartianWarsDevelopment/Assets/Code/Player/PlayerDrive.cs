@@ -26,8 +26,8 @@ namespace Code.Player
     [Range(0.5f, 10f)] [SerializeField] private float _downforce = 1.0f;
     [SerializeField] private float _speed;
 
-    private float _steering;
-    private float _throttle;
+    private float _steeringInput;
+    private float _throttleInput;
     private Rigidbody _rigidbody;
     private WheelCollider[] _wheelColliders = Array.Empty<WheelCollider>();
 
@@ -58,14 +58,14 @@ namespace Code.Player
 
     private void GetInput()
     {
-      _throttle = _inputService.Axis.y;
-      _steering = _turnInputCurve.Evaluate(_inputService.Axis.x) * _steerAngle;
+      _throttleInput = _inputService.JoystickAxis.y;
+      _steeringInput = _turnInputCurve.Evaluate(_inputService.JoystickAxis.x) * _steerAngle;
     }
 
     private void SetSteeringDirection()
     {
       foreach (WheelCollider wheel in _turnWheels)
-        wheel.steerAngle = Mathf.Lerp(wheel.steerAngle, _steering, _steerSpeed);
+        wheel.steerAngle = Mathf.Lerp(wheel.steerAngle, _steeringInput, _steerSpeed);
     }
 
     private void UpdateWheelColliders()
@@ -82,13 +82,13 @@ namespace Code.Player
 
     private void ApplyThrottleAndBrake()
     {
-      if (_throttle != 0 && (Mathf.Abs(_speed) < HandbrakeApplySpeed ||
-                             Math.Abs(Mathf.Sign(_speed) - Mathf.Sign(_throttle)) < Constants.Epsilon))
+      if (_throttleInput != 0 && (Mathf.Abs(_speed) < HandbrakeApplySpeed ||
+                             Math.Abs(Mathf.Sign(_speed) - Mathf.Sign(_throttleInput)) < Constants.Epsilon))
         foreach (WheelCollider wheel in _driveWheels)
-          wheel.motorTorque = _throttle * _motorTorque.Evaluate(_speed) * _diffGearing / _driveWheels.Length;
-      else if (_throttle != 0)
+          wheel.motorTorque = _throttleInput * _motorTorque.Evaluate(_speed) * _diffGearing / _driveWheels.Length;
+      else if (_throttleInput != 0)
         foreach (WheelCollider wheel in _wheelColliders)
-          wheel.brakeTorque = Mathf.Abs(_throttle) * _brakeForce;
+          wheel.brakeTorque = Mathf.Abs(_throttleInput) * _brakeForce;
     }
 
     private void ApplyDownforce() =>
