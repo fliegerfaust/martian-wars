@@ -6,6 +6,5 @@ namespace Code.Infrastructure.Services.Factory
   {
     GameObject CreatePlayer(Vector3 at);
     GameObject CreateHud();
-    GameObject CreateThirdPersonCamera();
   }
 }
