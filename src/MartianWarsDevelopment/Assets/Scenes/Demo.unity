@@ -186,7 +186,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PolybrushMesh23284
+  m_Name: PolybrushMesh-457644
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -625,6 +625,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2023900145951947838, guid: 00fdb6abb18b65844ac859a1ce15b122, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 718697477}
     - target: {fileID: 2374062536471144736, guid: 00fdb6abb18b65844ac859a1ce15b122, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -676,6 +680,10 @@ PrefabInstance:
     - target: {fileID: 3611904079330903287, guid: 00fdb6abb18b65844ac859a1ce15b122, type: 3}
       propertyPath: m_Name
       value: MartianWorld
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611904079462045571, guid: 00fdb6abb18b65844ac859a1ce15b122, type: 3}
+      propertyPath: m_PolyMesh.name
+      value: PolybrushMesh-457644
       objectReference: {fileID: 0}
     - target: {fileID: 3611904079462045571, guid: 00fdb6abb18b65844ac859a1ce15b122, type: 3}
       propertyPath: m_PolyMesh.m_Mesh
