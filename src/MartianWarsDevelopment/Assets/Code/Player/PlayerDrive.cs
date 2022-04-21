@@ -46,9 +46,11 @@ namespace Code.Player
       UpdateWheelColliders();
     }
 
+    private void Update() =>
+      GetInput();
+
     private void FixedUpdate()
     {
-      GetInput();
       SetSteeringDirection();
       UpdateWheelColliders();
       MeasureCurrentSpeed();
@@ -83,7 +85,7 @@ namespace Code.Player
     private void ApplyThrottleAndBrake()
     {
       if (_throttleInput != 0 && (Mathf.Abs(_speed) < HandbrakeApplySpeed ||
-                             Math.Abs(Mathf.Sign(_speed) - Mathf.Sign(_throttleInput)) < Constants.Epsilon))
+                                  Math.Abs(Mathf.Sign(_speed) - Mathf.Sign(_throttleInput)) < Constants.Epsilon))
         foreach (WheelCollider wheel in _driveWheels)
           wheel.motorTorque = _throttleInput * _motorTorque.Evaluate(_speed) * _diffGearing / _driveWheels.Length;
       else if (_throttleInput != 0)
