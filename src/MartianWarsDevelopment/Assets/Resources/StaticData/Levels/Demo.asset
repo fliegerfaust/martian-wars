@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Demo
   m_EditorClassIdentifier: 
   LevelKey: Demo
-  PlayerInitialPosition: {x: -39.21, y: -3.09, z: 22.71}
+  PlayerInitialPosition: {x: -18.3, y: 2.42, z: -210.44}
