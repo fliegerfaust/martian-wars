@@ -85,7 +85,7 @@ namespace Code.Player
     private void ApplyThrottleAndBrake()
     {
       if (_throttleInput != 0 && (Mathf.Abs(_speed) < HandbrakeApplySpeed ||
-                                  Mathf.Abs(Mathf.Sign(_speed) - Mathf.Sign(_throttleInput)) < Constants.Epsilon))
+                                  Mathf.Abs(Mathf.Sign(_speed) - Mathf.Sign(_throttleInput)) < Mathf.Epsilon))
         foreach (WheelCollider wheel in _driveWheels)
           wheel.motorTorque = _throttleInput * _motorTorque.Evaluate(_speed) * _diffGearing / _driveWheels.Length;
       else if (_throttleInput != 0)

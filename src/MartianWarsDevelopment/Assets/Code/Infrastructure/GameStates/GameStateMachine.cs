@@ -9,8 +9,8 @@ namespace Code.Infrastructure.GameStates
   {
     private readonly Dictionary<Type, IExitableState> _states = new Dictionary<Type, IExitableState>();
     private IExitableState _activeState;
-    
-    public void RegisterState<TState>(TState state) where TState : class, IExitableState => 
+
+    public void RegisterState<TState>(TState state) where TState : class, IExitableState =>
       _states.Add(typeof(TState), state);
 
     public void Enter<TState>() where TState : class, IState
