@@ -19,5 +19,6 @@ namespace Code.Editor
       if (GUILayout.Button(ButtonName))
         levelData.PlayerInitialPosition = GameObject.FindWithTag(PlayerInitialPoint).transform.position;
     }
+    
   }
 }

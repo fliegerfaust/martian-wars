@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Code.StaticData;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services.StaticData
 {
+  [UsedImplicitly]
   public class StaticDataService : IStaticDataService
   {
     private const string StaticDataLevelsPath = "StaticData/Levels";
